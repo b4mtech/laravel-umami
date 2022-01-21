@@ -14,16 +14,23 @@ You can install the package via composer:
 composer require b4mtech/laravel-umami
 ```
 
-## Usage
-
-```php
-// Usage description here
+## Publish Items
+You should publish the config using the following command:
+```bash
+php artisan vendor:publish --provider="B4mtech\LaravelUmami\LaravelUmamiServiceProvider" --tag="umami-config"
 ```
 
-### Testing
-
+If you want to customize the blade component:
 ```bash
-composer test
+php artisan vendor:publish --provider="B4mtech\LaravelUmami\LaravelUmamiServiceProvider" --tag="umami-view-component"
+```
+## Usage
+As long as the `UMAMI_WEBSITE_ID` is set the blade component will be displayed. The following will need to be added inside your `head` html tags.
+
+```php
+@showUmami
+<x-laravel-umami::umami />
+@endshowUmami
 ```
 
 ### Changelog
