@@ -45,10 +45,7 @@
         "laravel": {
             "providers": [
                 "B4mtech\\LaravelUmami\\LaravelUmamiServiceProvider"
-            ],
-            "aliases": {
-                "LaravelUmami": "B4mtech\\LaravelUmami\\LaravelUmamiFacade"
-            }
+            ]
         }
     }
 }

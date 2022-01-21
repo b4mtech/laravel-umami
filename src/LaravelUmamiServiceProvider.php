@@ -2,6 +2,7 @@
 
 namespace B4mtech\LaravelUmami;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelUmamiServiceProvider extends ServiceProvider
@@ -11,36 +12,25 @@ class LaravelUmamiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Blade::if('showUmami', function () {
+            return config('umami.website_id') !== null;
+        });
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-umami');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-umami');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-umami');
 
         if ($this->app->runningInConsole()) {
+            // Publish the config
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-umami.php'),
-            ], 'config');
+                __DIR__.'/../config/config.php' => config_path('umami.php'),
+            ], 'umami-config');
 
             // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-umami'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-umami'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-umami'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
+            $this->publishes([
+                __DIR__.'/../resources/views/components' => resource_path('views/components'),
+            ], 'umami-views-components');
         }
     }
 
@@ -50,11 +40,6 @@ class LaravelUmamiServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-umami');
-
-        // Register the main class to use with the facade
-        $this->app->singleton('laravel-umami', function () {
-            return new LaravelUmami;
-        });
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'umami');
     }
 }
