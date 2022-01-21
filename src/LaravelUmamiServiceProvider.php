@@ -30,7 +30,7 @@ class LaravelUmamiServiceProvider extends ServiceProvider
             // Publishing the views.
             $this->publishes([
                 __DIR__.'/../resources/views/components' => resource_path('views/components'),
-            ], 'umami-views-components');
+            ], 'umami-view-components');
         }
     }
 
