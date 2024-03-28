@@ -22,10 +22,10 @@ class UmamiTest extends TestCase
                 async
                 defer
                 data-website-id="test123"
-                src="https://url.test.com/umami.js">
+                src="https://url.test.com/script.js">
             </script>
             HTML;
-        
+
         $this->assertComponentRenders($expected, $template);
     }
 }
