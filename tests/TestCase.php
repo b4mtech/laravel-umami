@@ -17,7 +17,7 @@ abstract class TestCase extends OrchestraTestCase
         ];
     }
 
-    public function assertComponentRenders(string $expected, string $template, array $data = []): void
+    public function assertComponentRenders(string $expected, string $template, $data = []): void
     {
         $indenter = new \Gajus\Dindent\Indenter();
 
