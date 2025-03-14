@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Warning":6,"B4mtech\\LaravelUmami\\Tests\\Components\\UmamiTest::it_can_render_correctly":3},"times":{"Warning":0.002,"B4mtech\\LaravelUmami\\Tests\\Components\\UmamiTest::it_can_render_correctly":0.047}}
+{"version":1,"defects":{"Warning":6,"B4mtech\\LaravelUmami\\Tests\\Components\\UmamiTest::it_can_render_correctly":3},"times":{"Warning":0.002,"B4mtech\\LaravelUmami\\Tests\\Components\\UmamiTest::it_can_render_correctly":0.038}}
